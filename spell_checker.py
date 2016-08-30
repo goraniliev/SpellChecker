@@ -7,6 +7,7 @@ __author__ = 'goran'
 # text_path = '/home/goran/Desktop/data/dataset-hw.txt'
 alphabet = 'abcdefgh'
 
+
 def levenshtein(x, y):
     M = len(x)
     N = len(y)
@@ -24,11 +25,12 @@ def levenshtein(x, y):
             dp[i][j] = min(min(dp[i - 1][j], dp[i][j - 1]) + 1, dp[i - 1][j - 1] + (0 if x[i - 1] == y[j - 1] else 2))
 
     # for row in dp:
-    #     print '\t'.join([str(i) for i in row])
+    # print '\t'.join([str(i) for i in row])
 
     return dp[M][N]
 
-def edits(word, unique_words):
+
+def edits(model, word, unique_words):
     suggestions = []
     print 'Unique Words Count {}'.format(len(unique_words))
     for w in unique_words:
@@ -37,23 +39,26 @@ def edits(word, unique_words):
 
     return sorted(suggestions, key=lambda x: -model[x])
 
-if __name__ == '__main__':
+
+def test():
     s = time.time()
     words = get_all_words()
     e = time.time()
-    print 'Words loaded from file in %f seconds' %(e - s)
+    print 'Words loaded from file in %f seconds' % (e - s)
     unique_words = set(words)
     s = time.time()
     model = train(words)
     e = time.time()
-    print 'Model built in %f seconds' %(e - s)
+    print 'Model built in %f seconds' % (e - s)
 
     # Spell Checking
     s = time.time()
-    suggestions = edits('чвек'.decode('utf-8'), unique_words)
+    suggestions = edits(model, 'чвек'.decode('utf-8'), unique_words)
     for w in suggestions:
         print w
     e = time.time()
-    print 'Edit dist one word suggestions found in %f seconds' %(e - s)
+    print 'Edit dist one word suggestions found in %f seconds' % (e - s)
 
 
+if __name__ == '__main__':
+    test()
