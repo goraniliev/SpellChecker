@@ -3,9 +3,11 @@ import time
 
 __author__ = 'goran'
 
-text_path = '/home/goran/Desktop/data/dataset-hw.txt'
-separated_words_path = '/home/goran/Desktop/data/dataset.txt'
-all_words_path = '/home/goran/Desktop/data/all_words.txt'
+# text_path = '/home/goran/Desktop/data/dataset-hw.txt'
+
+text_path = '../../Domasni/dataset-hw.txt'
+separated_words_path = '../dataset.txt'
+all_words_path = '../all_words.txt'
 
 def extract(line):
     word = []
