@@ -75,7 +75,8 @@ def get_all_words(path=all_words_path):
             words += line.decode('utf-8').split(' ')
     return words
 
-if __name__ == '__main__':
+
+def test():
     start = time.time()
     transform_dataset()
     end = time.time()
@@ -85,3 +86,7 @@ if __name__ == '__main__':
     print end - start
 
     all_words_toghether()
+
+
+if __name__ == '__main__':
+    test()
