@@ -69,8 +69,10 @@ def all_words_toghether(path=all_words_path):
 
 
 def get_all_words(path=all_words_path):
+    words = list()
     with open(path, 'r') as fin:
-        words = fin.read().decode('utf-8').split(' ')
+        for line in fin:
+            words.append(line.decode('utf-8').split(' '))
     return words
 
 if __name__ == '__main__':
