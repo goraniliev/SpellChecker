@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import time
 from create_model import get_all_words, train
+import sys
+sys.stdout = open('result.txt', 'w')
 
 __author__ = 'goran'
 
