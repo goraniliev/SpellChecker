@@ -42,6 +42,7 @@ if __name__ == '__main__':
     words = get_all_words()
     e = time.time()
     print 'Words loaded from file in %f seconds' %(e - s)
+    # print(type(words), words[:3])
     unique_words = set(words)
     s = time.time()
     model = train(words)

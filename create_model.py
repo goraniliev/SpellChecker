@@ -72,7 +72,7 @@ def get_all_words(path=all_words_path):
     words = list()
     with open(path, 'r') as fin:
         for line in fin:
-            words.append(line.decode('utf-8').split(' '))
+            words += line.decode('utf-8').split(' ')
     return words
 
 if __name__ == '__main__':
