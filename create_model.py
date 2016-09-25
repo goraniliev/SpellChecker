@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
 import time
-import sys
-
-__author__ = 'goran'
 
 text_path = '../SpellCheckingData/dataset-hw.txt'
 separated_words_path = '../SpellCheckingData/dataset.txt'
 all_words_path = '../SpellCheckingData/all_words.txt'
-
-sys.stdout = open('result.txt', 'w')
 
 
 def extract(line):

@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
 from create_model import get_all_words, train
-import sys
-
-sys.stdout = open('result.txt', 'w')
-
-__author__ = 'goran'
-
-# text_path = '/home/goran/Desktop/data/dataset-hw.txt'
-alphabet = 'abcdefgh'
 
 
 def levenshtein(x, y):
