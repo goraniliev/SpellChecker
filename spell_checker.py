@@ -2,6 +2,7 @@
 import time
 from create_model import get_all_words, train
 import sys
+
 sys.stdout = open('result.txt', 'w')
 
 __author__ = 'goran'
@@ -46,7 +47,7 @@ def test():
     s = time.time()
     words = get_all_words()
     e = time.time()
-    print 'Words loaded from file in %f seconds' %(e - s)
+    print 'Words loaded from file in %f seconds' % (e - s)
     # print(type(words), words[:3])
     unique_words = set(words)
     s = time.time()
