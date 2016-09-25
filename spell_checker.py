@@ -27,11 +27,10 @@ def levenshtein(x, y):
 
 def edits(model, word, unique_words):
     suggestions = []
-    print 'Unique Words Count {}'.format(len(unique_words))
     for w in unique_words:
-        if levenshtein(w, word) < 2:
-            suggestions.append(w)
-
+        if abs(len(w) - len(word)) < 2:
+            if levenshtein(w, word) < 2:
+                suggestions.append(w)
     return sorted(suggestions, key=lambda x: -model[x])
 
 
@@ -40,20 +39,23 @@ def test():
     words = get_all_words()
     e = time.time()
     print 'Words loaded from file in %f seconds' % (e - s)
-    # print(type(words), words[:3])
+
     unique_words = set(words)
+    print 'Number of unique words: {}'.format(len(unique_words))
+
     s = time.time()
     model = train(words)
     e = time.time()
     print 'Model built in %f seconds' % (e - s)
 
     # Spell Checking
-    s = time.time()
-    suggestions = edits(model, 'чвек'.decode('utf-8'), unique_words)
-    for w in suggestions:
-        print w
-    e = time.time()
-    print 'Edit dist one word suggestions found in %f seconds' % (e - s)
+    while True:
+        query_word = raw_input("Enter a word: ")
+        if query_word == 'Х':
+            break
+        suggestions = edits(model, query_word.decode('utf-8'), unique_words)
+        for w in suggestions:
+            print w
 
 
 if __name__ == '__main__':
