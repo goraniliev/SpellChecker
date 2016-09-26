@@ -27,11 +27,15 @@ def levenshtein(x, y):
 
 def edits(model, word, unique_words):
     suggestions = []
+    new_model = {}
     for w in unique_words:
-        if abs(len(w) - len(word)) < 2:
-            if levenshtein(w, word) < 2:
+        if abs(len(w) - len(word)) <= 2:
+            distance = levenshtein(w, word)
+            if distance <= 2:
                 suggestions.append(w)
-    return sorted(suggestions, key=lambda x: -model[x])
+                new_model[w] = distance
+    # return sorted(suggestions, key=lambda x: -model[x])
+    return sorted(suggestions, key=lambda x: (-model[x], new_model[x]))[0: min(len(suggestions), 10)]
 
 
 def test():
