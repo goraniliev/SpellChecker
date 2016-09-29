@@ -29,7 +29,7 @@ def edits(model, word, unique_words):
     suggestions = []
     new_model = {}
     for w in unique_words:
-        if abs(len(w) - len(word)) <= 2:
+        if abs(len(w) - len(word)) <= 2 and w != word:
             distance = levenshtein(w, word)
             if distance <= 2:
                 suggestions.append(w)
